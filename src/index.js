@@ -10,6 +10,7 @@ import {
 import socketManager from './services/SocketManager';
 import notificationManager from './services/NotificationManager';
 import reducers from './reducers';
+import { goOnline, goOffline, addMessage } from './actions';
 import App from './App';
 import './index.css';
 
@@ -32,11 +33,7 @@ let store = createStore(reducers, initialState);
 socketManager.setup();
 
 socketManager.onMessage = function(data) {
-  store.dispatch({
-    type: 'ADD_MESSAGE',
-    conversationId: data.conversationId,
-    message: data.message
-  });
+  store.dispatch(addMessage(data));
   if (!data.message.isSent) {
     notificationManager.sendNotification(data.message);
   }
@@ -44,13 +41,13 @@ socketManager.onMessage = function(data) {
 
 /** Begin Offline handling */
 if (navigator.onLine) {
-  store.dispatch({ type: 'GO_ONLINE' });
+  store.dispatch(goOnline());
 } else {
-  store.dispatch({ type: 'GO_OFFLINE' });
+  store.dispatch(goOffline());
 }
 
-window.addEventListener('online',  () => { store.dispatch({ type: 'GO_ONLINE' }); });
-window.addEventListener('offline',  () => { store.dispatch({ type: 'GO_OFFLINE' }); });
+window.addEventListener('online',  () => { store.dispatch(goOnline()); });
+window.addEventListener('offline',  () => { store.dispatch(goOffline()); });
 /** End Offline handling */
 
 store.subscribe(() => {

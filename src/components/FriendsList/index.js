@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import FriendListItem from './FriendListItem';
+import { pushChatMessages } from '../../actions';
+
 import './style.css';
 
 class FriendsList extends Component {
@@ -15,7 +17,7 @@ class FriendsList extends Component {
     fetch('./conversations.json')
       .then( response => response.json())
       .then( json => {
-        dispatch({ type: 'PUSH_MESSAGES', conversations: json.data })
+        dispatch(pushChatMessages(json.data))
       });
   }
 

@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { filterConversationsBy } from '../../actions';
+
 class SearchConversation extends Component {
 
   handleSearch = (e) => {
-    this.props.dispatch({
-      type: 'FILTER_CONVERSATIONS',
-      filterBy: e.target.value
-    });
+    this.props.dispatch(filterConversationsBy(e.target.value));
   }
-
 
   render() {
     return (

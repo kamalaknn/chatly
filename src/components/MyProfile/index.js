@@ -1,20 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
 import notificationManager from '../../services/NotificationManager';
+import { enableNotifications, disableNotifications } from '../../actions';
+
 import './MyProfile.css';
 
 let MyProfile = ({profile, isNotificationsEnabled, dispatch}) => {
 
   function toggleNotification() {
     if (isNotificationsEnabled) {
-      dispatch({
-        type: 'DISABLE_NOTIFICATIONS'
-      });
+      dispatch(disableNotifications());
       notificationManager.disableNotifications();
     } else {
-      dispatch({
-        type: 'ENABLE_NOTIFICATIONS'
-      });
+      dispatch(enableNotifications());
       notificationManager.enableNotifications();
     }
   }
