@@ -1,0 +1,10 @@
+.friend-list-item {
+  height: 72px;
+  border-bottom: 1px solid #f2f2f2;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.friend-list-item:hover {
+  background-color:  #f4f5f5;;
+}

@@ -1,0 +1,24 @@
+.message-wrapper {
+  margin: 10px 9%;
+}
+
+.message-wrapper:last-of-type {
+  margin-bottom: 25px;
+}
+
+.message {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: black;
+  box-shadow: 0 0 2px #ccc;
+}
+
+.message-wrapper__sent .message {
+  background-color: #dcf8c6;
+}
+.message-wrapper__received .message {
+  background-color: white;
+}
+.message-wrapper__sent {
+  align-self: flex-end;
+}
