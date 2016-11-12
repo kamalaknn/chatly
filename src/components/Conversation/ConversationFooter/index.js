@@ -43,10 +43,16 @@ let style = {
   }
 
   render() {
+    let { isOnline } = this.props;
     return (
-      <div className="conversation-footer">
-        <input style={style} value={this.state.draftMessage} onChange={this.handleMessageChange}/>
-        <button onClick={this.sendMessage}>Send</button>
+      <div>
+        {!isOnline &&
+          <div>You are offline. But you can still keep sending messages.</div>
+        }
+        <div className="conversation-footer">
+          <input style={style} value={this.state.draftMessage} onChange={this.handleMessageChange}/>
+          <button onClick={this.sendMessage}>Send</button>
+        </div>
       </div>
     );
   }
@@ -54,9 +60,10 @@ let style = {
 
 const mapStateToProps = (state) => {
   return {
-    conversationId: state.currentConversationId
-  }
-}
+    conversationId: state.currentConversationId,
+    isOnline: state.isOnline
+  };
+};
 
 ConversationFooter = connect(mapStateToProps)(ConversationFooter);
 

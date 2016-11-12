@@ -42,6 +42,17 @@ socketManager.onMessage = function(data) {
   }
 };
 
+/** Begin Offline handling */
+if (navigator.onLine) {
+  store.dispatch({ type: 'GO_ONLINE' });
+} else {
+  store.dispatch({ type: 'GO_OFFLINE' });
+}
+
+window.addEventListener('online',  () => { store.dispatch({ type: 'GO_ONLINE' }); });
+window.addEventListener('offline',  () => { store.dispatch({ type: 'GO_OFFLINE' }); });
+/** End Offline handling */
+
 store.subscribe(() => {
   localStorage.setItem('chatlyState', JSON.stringify(store.getState()));
   console.log(store.getState());

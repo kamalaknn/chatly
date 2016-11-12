@@ -4,8 +4,10 @@ import currentConversationId from './currentConversationId';
 import filterConversations from './filterConversations';
 import conversationsById from './conversationsById';
 import isNotificationsEnabled from './isNotificationsEnabled';
+import isOnline from './isOnline';
 
 export default combineReducers({
+  isOnline,
   isNotificationsEnabled,
   currentConversationId,
   filterConversations,
