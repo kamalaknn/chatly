@@ -9,6 +9,7 @@ cache:
     $HOME/.npm
 
 install:
+  - npm install -g yarn
   - yarn
 
 script:
