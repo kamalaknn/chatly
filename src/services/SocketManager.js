@@ -1,6 +1,6 @@
 class SocketManager {
   setup() {
-    let websocket = new WebSocket('ws://echo.websocket.org/');
+    let websocket = new WebSocket('wss://echo.websocket.org/');
 
     this.websocket = websocket;
 

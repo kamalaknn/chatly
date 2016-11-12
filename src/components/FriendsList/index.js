@@ -12,7 +12,7 @@ class FriendsList extends Component {
       return;
     }
 
-    fetch('/conversations.json')
+    fetch('./conversations.json')
       .then( response => response.json())
       .then( json => {
         dispatch({ type: 'PUSH_MESSAGES', conversations: json.data })

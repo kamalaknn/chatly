@@ -2,6 +2,7 @@
   "name": "chatly",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://kamalaknn.github.io/chatly",
   "devDependencies": {
     "react-scripts": "0.7.0"
   },

@@ -6,7 +6,8 @@ node_js: "6"
 
 cache:
   directories:
-    $HOME/.npm
+    - $HOME/.npm
+    - node_modules
 
 install:
   - npm install -g yarn
@@ -14,3 +15,6 @@ install:
 
 script:
   - npm test
+
+after_success:
+  - .travis/deploy.sh
