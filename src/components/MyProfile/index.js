@@ -6,6 +6,11 @@ import { enableNotifications, disableNotifications } from '../../actions';
 
 import './MyProfile.css';
 
+let style = {
+  borderRadius: '50%',
+  height: '55px'
+};
+
 let MyProfile = ({profile, isNotificationsEnabled, dispatch}) => {
 
   function toggleNotification() {
@@ -18,9 +23,10 @@ let MyProfile = ({profile, isNotificationsEnabled, dispatch}) => {
     }
   }
 
-  let notificationToggleText = isNotificationsEnabled ? 'Disable Notification' : 'Enable Notification';
+  let notificationToggleText = isNotificationsEnabled ? 'Mute Notification' : 'Enable Notification';
   return (
     <div className='my-profile'>
+      <img src={profile.avatar} style={style} alt={profile.name}/>
       <span>{profile.name}</span>
       <button onClick={toggleNotification}>
         {notificationToggleText}

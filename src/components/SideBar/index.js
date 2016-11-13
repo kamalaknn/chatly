@@ -5,10 +5,7 @@ import './style.css';
 import FriendsList from '../FriendsList';
 import MyProfile from '../MyProfile';
 import SearchConversation from '../SearchConversation';
-
-let myProfile = {
-  name: 'Kamalakannan'
-};
+import myProfile from '../../constants/me';
 
 class SideBar extends Component {
   render() {
@@ -26,7 +23,7 @@ const mapStateToProps = (state) => {
   let friends = state.friendsList;
 
   if (state.filterConversations) {
-    friends = friends.filter(friend => friend.name.indexOf(state.filterConversations) !== -1);
+    friends = friends.filter(friend => friend.name.toLowerCase().indexOf(state.filterConversations.toLowerCase()) !== -1);
   }
 
   return {

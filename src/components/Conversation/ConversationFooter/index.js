@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { sendMessage } from '../../../actions';
-import socketManager from '../../../services/SocketManager';
+import messagingService from '../../../services/MessagingService';
 
 import './style.css';
 
@@ -16,29 +15,33 @@ let style = {
   margin: '0 10px'
 };
 
- class ConversationFooter extends Component {
+const RETURN_KEY = 13;
+
+class ConversationFooter extends Component {
   constructor() {
     super(...arguments);
     this.state = { draftMessage: '' };
   }
 
-  handleMessageChange = (e, value) => {
+  handleMessageChange = (e) => {
     this.setState({ draftMessage: e.target.value });
+  }
+
+  /**
+    Send messages on return key
+  */
+  handleKeyPress = (e) => {
+    let keyPressed = e.charCode;
+
+    if (keyPressed === RETURN_KEY) {
+      this.sendMessage();
+    }
   }
 
   sendMessage = () => {
     let messageContents = this.state.draftMessage;
-    let message = {
-      //TODO: get from profile
-      from: 'Kamalakannan',
-      time: new Date().toISOString(),
-      contents: messageContents,
-      isSent: true,
-      isSending: true
-    };
     let conversationId = this.props.conversationId;
-    this.props.dispatch(sendMessage(conversationId, message));
-    socketManager.sendMessage(conversationId, message);
+    messagingService.sendMessageTo(conversationId, messageContents);
     this.setState({ draftMessage: '' });
   }
 
@@ -50,7 +53,7 @@ let style = {
           <div>You are offline. But you can still keep sending messages.</div>
         }
         <div className="conversation-footer">
-          <input style={style} value={this.state.draftMessage} onChange={this.handleMessageChange}/>
+          <input style={style} value={this.state.draftMessage} onChange={this.handleMessageChange} onKeyPress={this.handleKeyPress}/>
           <button onClick={this.sendMessage}>Send</button>
         </div>
       </div>

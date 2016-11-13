@@ -7,7 +7,7 @@ export default class extends Component {
     let { messages } = this.props;
     return (
       <div className='message-list'>
-      {messages.map( message => <Message message={message} key={message.time} /> )}
+      {messages.map( message => <Message message={message} key={message.id} /> )}
       </div>
     );
   }

@@ -11,8 +11,10 @@ class SocketManager {
       console.log('close');
     };
     websocket.onmessage = (evt) => {
+      let message = JSON.parse(evt.data);
+      message.isSending = false;
       if (this.onMessage) {
-        this.onMessage(JSON.parse(evt.data));
+        this.onMessage(message);
       }
     };
     websocket.onerror = function(evt) {
@@ -20,8 +22,12 @@ class SocketManager {
     };
   }
 
-  sendMessage(conversationId, message) {
-    this.websocket.send(JSON.stringify({conversationId, message}));
+  sendMessage(message) {
+    this.websocket.send(JSON.stringify(message));
+    if (message.outgoing) {
+      message.isSending = true;
+    }
+    return message;
   }
 }
 

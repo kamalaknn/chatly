@@ -3,28 +3,27 @@ const conversationsById = (state = null, action) => {
     case 'PUSH_MESSAGES':
       return Object.assign({}, state,  action.conversations);
     case 'SEND_MESSAGE':
-      let originalConversation = state[action.conversationId];
+      let originalConversation = state[action.message.receiver.id];
       let newConversation = Object.assign({}, originalConversation, {
         messages: [...originalConversation.messages, action.message]
       });
       return Object.assign({}, state, {
-        [action.conversationId]: newConversation
+        [action.message.receiver.id]: newConversation
       });
 
     case 'ADD_MESSAGE':
-      let conversation = state[action.conversationId];
       let message = action.message;
-      message.isSending = false;
+      let conversationId = message.outgoing ? message.receiver.id : message.sender.id;
+      let conversation = state[conversationId];
 
-      let messages = conversation.messages.map( tmpMessage => {
-        if (message.time === tmpMessage.time) {
-          return Object.assign({}, tmpMessage, message);
-        }
-        return tmpMessage;
-      });
+      let messagesInConversation = conversation.messages;
+
+      let newMessagesInConversation = messagesInConversation.filter(tmpMessage => tmpMessage.id !== message.id);
+      newMessagesInConversation = newMessagesInConversation.concat([message]);
+
       return Object.assign({}, state, {
-        [action.conversationId]: Object.assign({}, conversation, {
-          messages
+        [conversationId]: Object.assign({}, conversation, {
+          messages: newMessagesInConversation
         })
       });
     default:

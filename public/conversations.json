@@ -2,25 +2,53 @@
   "data": {
     "1": {
       "messages": [{
-        "from": "Kamal",
+        "id": "1084431099552",
+        "receiver": {
+          "id": "1",
+          "name": "Numaan Ashraf",
+          "avatar": "https://avatars2.githubusercontent.com/u/3295568?v=3&s=460"
+        },
+        "sender": {
+          "id": "9999",
+          "name": "Kamalakannan",
+          "avatar": "https://avatars0.githubusercontent.com/u/8401064?v=3&s=460"
+        },
         "contents": "Hi",
-        "time": "2016-11-06T13:58:13.604Z",
-        "isSent": true
+        "time": 1479027567726,
+        "outgoing": true
       }, {
-        "from": "Kamal",
-        "contents": "How are you",
-        "time": "2016-11-06T13:58:14.604Z"
-      }, {
-        "from": "Kamal",
+        "id": "1197503125975",
+        "receiver": {
+          "id": "9999",
+          "name": "Kamalakannan",
+          "avatar": "https://avatars0.githubusercontent.com/u/8401064?v=3&s=460"
+        },
+        "sender": {
+          "id": 1,
+          "name": "Numaan Ashraf",
+          "avatar": "https://avatars2.githubusercontent.com/u/3295568?v=3&s=460"
+        },
         "contents": "Hello",
-        "time": "2016-11-06T13:58:16.604Z"
+        "time": 1479027636861,
+        "outgoing": false
       }]
     },
     "2": {
       "messages": [{
-        "from": "Kamal2",
-        "contents": "Hi from kamal2",
-        "time": "2016-11-06T13:58:12.604Z"
+        "id": "998285759127",
+        "sender": {
+          "id": "9999",
+          "name": "Kamalakannan",
+          "avatar": "https://avatars0.githubusercontent.com/u/8401064?v=3&s=460"
+        },
+        "receiver": {
+          "id": "2",
+          "name": "Shamasis Bhattacharya",
+          "avatar": "https://avatars3.githubusercontent.com/u/232373?v=3&s=460"
+        },
+        "contents": "Hi",
+        "time": 1479027887917,
+        "outgoing": false
       }]
     }
   }

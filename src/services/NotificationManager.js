@@ -1,3 +1,5 @@
+import { viewConversation } from '../actions';
+
 class NotificationManager {
   constructor() {
     this.isEnabled = false;
@@ -5,6 +7,11 @@ class NotificationManager {
     if (this.hasNotificationSupport) {
       this.isNotificationPermissionGranted = Notification.permission === 'granted';
     }
+  }
+
+  setup({ isEnabled, store }) {
+    this.isEnabled = isEnabled;
+    this.store = store;
   }
 
   enableNotifications() {
@@ -34,9 +41,14 @@ class NotificationManager {
 
   sendNotification(message) {
     if (this.canSendNotification()) {
-      new Notification(message.from, {
-        body: message.contents
+      let notification = new Notification(message.sender.name, {
+        body: message.contents,
+        tag: message.sender.id,
+        icon: message.sender.avatar
       });
+      notification.onclick = () => {
+        this.store.dispatch(viewConversation(message.sender.id));
+      };
     }
   }
 }

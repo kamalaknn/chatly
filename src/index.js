@@ -10,34 +10,24 @@ import {
 import socketManager from './services/SocketManager';
 import notificationManager from './services/NotificationManager';
 import reducers from './reducers';
-import { goOnline, goOffline, addMessage } from './actions';
+import { goOnline, goOffline } from './actions';
+import friendsList from './constants/friendsList';
+import messagingService from './services/MessagingService';
 import App from './App';
 import './index.css';
 
+// load state from localStorage
 let backupState = JSON.parse(localStorage.getItem('chatlyState'));
 
-let initialState = Object.assign({}, {
-  friendsList: [{
-    id: 1,
-    name: 'Kamal',
-    avatar: 'https://www.gravatar.com/avatar/a8bf42363b96ff4ec3d26971599c2431'
-  }, {
-    id: 2,
-    name: 'Kamal2',
-    avatar: 'https://www.gravatar.com/avatar/a8bf42363b96ff4ec3d26971599c2431'
-  }]
-}, backupState, { currentConversationId: null });
+let initialState = Object.assign({ friendsList }, backupState, { currentConversationId: null });
 
 let store = createStore(reducers, initialState);
 
+notificationManager.setup({ isEnabled: initialState.isNotificationsEnabled, store });
+
 socketManager.setup();
 
-socketManager.onMessage = function(data) {
-  store.dispatch(addMessage(data));
-  if (!data.message.isSent) {
-    notificationManager.sendNotification(data.message);
-  }
-};
+messagingService.setup({ socketManager, notificationManager, store });
 
 /** Begin Offline handling */
 if (navigator.onLine) {
@@ -48,12 +38,12 @@ if (navigator.onLine) {
 
 window.addEventListener('online',  () => { store.dispatch(goOnline()); });
 window.addEventListener('offline',  () => { store.dispatch(goOffline()); });
-/** End Offline handling */
 
+// Push new state to localStorage for preserving state
 store.subscribe(() => {
   localStorage.setItem('chatlyState', JSON.stringify(store.getState()));
-  console.log(store.getState());
 });
+/** End Offline handling */
 
 ReactDOM.render(
   <Provider store={store}>

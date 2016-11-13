@@ -5,20 +5,18 @@ export function viewConversation(conversationId) {
   };
 }
 
-export function sendMessage(conversationId, message) {
+export function sendMessage(message) {
   return {
     type: 'SEND_MESSAGE',
-    conversationId,
     message
-  }
+  };
 }
 
-export function addMessage(data) {
+export function addMessage(message) {
   return {
     type: 'ADD_MESSAGE',
-    conversationId: data.conversationId,
-    message: data.message
-  }
+    message
+  };
 }
 
 export function disableNotifications() {
