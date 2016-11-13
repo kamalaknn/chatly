@@ -40,6 +40,10 @@ This output is available at [https://kamalaknn.github.io/chatly/](https://kamala
  - If the user goes offline, while using the app, a banner is shown, indicating offline status.
  - To allow, loading the app when a user is offline, a `service-worker` caches client assets. User can view and read existing conversations when offline.
 
+## Deployment
+
+ - All commits to master are continuosly deployed to gh-pages where the app is hosted.
+
 ## Tests
 
  - The test suite now includes unit tests for reducers.
