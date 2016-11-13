@@ -5,13 +5,6 @@ export function viewConversation(conversationId) {
   };
 }
 
-export function sendMessage(message) {
-  return {
-    type: 'SEND_MESSAGE',
-    message
-  };
-}
-
 export function addMessage(message) {
   return {
     type: 'ADD_MESSAGE',

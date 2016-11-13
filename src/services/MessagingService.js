@@ -1,6 +1,6 @@
 import me from '../constants/me';
 import friendsList from '../constants/friendsList';
-import { sendMessage, addMessage } from '../actions';
+import { addMessage } from '../actions';
 
 function generateMessageId() {
   return Math.floor(Math.random() * new Date());
@@ -25,7 +25,7 @@ class MessagingService {
       outgoing: true,
       contents: messageContents
     };
-    this.store.dispatch(sendMessage(this.socketManager.sendMessage(payload)));
+    this.store.dispatch(addMessage(this.socketManager.sendMessage(payload)));
   }
 
   captureIncomingMessage = (message) => {

@@ -2,14 +2,6 @@ const conversationsById = (state = null, action) => {
   switch (action.type) {
     case 'PUSH_MESSAGES':
       return Object.assign({}, state,  action.conversations);
-    case 'SEND_MESSAGE':
-      let originalConversation = state[action.message.receiver.id];
-      let newConversation = Object.assign({}, originalConversation, {
-        messages: [...originalConversation.messages, action.message]
-      });
-      return Object.assign({}, state, {
-        [action.message.receiver.id]: newConversation
-      });
 
     case 'ADD_MESSAGE':
       let message = action.message;

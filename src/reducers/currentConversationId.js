@@ -5,6 +5,6 @@ const currentConversationId = (state = null, action) => {
     default:
       return state;
   }
-}
+};
 
 export default currentConversationId;
