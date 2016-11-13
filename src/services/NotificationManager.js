@@ -1,4 +1,4 @@
-import { viewConversation } from '../actions';
+import { viewConversation, enableNotifications, disableNotifications } from '../actions';
 
 class NotificationManager {
   constructor() {
@@ -21,10 +21,14 @@ class NotificationManager {
 
     if (this.isNotificationPermissionGranted) {
       this.isEnabled = true;
+      this.store.dispatch(enableNotifications());
     } else {
       Notification.requestPermission().then(() => {
         this.isNotificationPermissionGranted = Notification.permission === 'granted';
-        this.isEnabled = true;
+        if (this.isNotificationPermissionGranted) {
+          this.isEnabled = true;
+          this.store.dispatch(enableNotifications());
+        }
       }).catch(err => console.error(err));
     }
   }
@@ -33,6 +37,8 @@ class NotificationManager {
     if (this.hasNotificationSupport) {
       this.isEnabled = false;
     }
+
+    this.store.dispatch(disableNotifications());
   }
 
   canSendNotification() {
