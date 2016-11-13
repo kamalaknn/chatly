@@ -1,0 +1,13 @@
+.search-conversation {
+  padding: 10px;
+}
+
+.search-conversation--input {
+  width: calc(100% - 10px);
+  height: 30px;
+  font-size: 15px;
+}
+
+.search-conversation--input:focus, .search-conversation--input:active {
+  outline: none;
+}

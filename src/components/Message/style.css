@@ -7,7 +7,7 @@
 }
 
 .message {
-  padding: 5px 10px;
+  padding: 5px 12px;
   border-radius: 5px;
   color: black;
   box-shadow: 0 0 2px #ccc;
@@ -24,6 +24,7 @@
 }
 
 .message--timestamp {
+  padding-left: 8px;
   font-size: 8px;
   color: rgba(0, 0, 0, 0.45);
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { filterConversationsBy } from '../../actions';
+import './style.css';
 
 class SearchConversation extends Component {
 
@@ -11,7 +12,9 @@ class SearchConversation extends Component {
 
   render() {
     return (
-      <input style={{width:'100%'}} onChange={this.handleSearch} placeholder='Search conversations'/>
+      <div className='search-conversation'>
+        <input className='search-conversation--input' onChange={this.handleSearch} placeholder='Search Conversations'/>
+      </div>
     );
   }
 }

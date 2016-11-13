@@ -1,0 +1,12 @@
+.intro-conversation {
+  align-items: center;
+  justify-content: center;
+  background-color: #e5ddd5;
+  height: 100%;
+  width: 70%;
+  display: flex;
+}
+
+.intro-conversation--intro-text {
+  font-size: 20px;
+}

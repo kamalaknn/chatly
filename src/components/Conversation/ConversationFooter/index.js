@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import messagingService from '../../../services/MessagingService';
 
 import './style.css';
+import sendImg from './send.svg';
 
 let style = {
   borderRadius: '5px',
@@ -50,11 +51,13 @@ class ConversationFooter extends Component {
     return (
       <div>
         {!isOnline &&
-          <div>You are offline. But you can still keep sending messages.</div>
+          <div className='offline-banner'>You are offline. But you can still keep sending messages.</div>
         }
         <div className="conversation-footer">
           <input style={style} value={this.state.draftMessage} onChange={this.handleMessageChange} onKeyPress={this.handleKeyPress}/>
-          <button onClick={this.sendMessage}>Send</button>
+          <div className='send-action' onClick={this.sendMessage}>
+            <img src={sendImg} alt='send message' />
+          </div>
         </div>
       </div>
     );

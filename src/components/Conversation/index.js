@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
+import IntroComponent from './Intro';
 import ConversationFooter from './ConversationFooter';
 import ConversationBody from './ConversationBody';
 
@@ -10,11 +12,7 @@ class Conversation extends Component {
     let { conversation } = this.props;
     if (!conversation) {
       return (
-        <div className='conversation'>
-          <div style={{alignSelf:'center', marginBottom: 'auto'}}>
-            Get started by selecting any conversation.
-          </div>
-        </div>
+        <IntroComponent/>
       );
     }
     return (

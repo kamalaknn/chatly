@@ -1,5 +1,34 @@
 .my-profile {
-  height: 50px;
-  padding: 10px;
   background-color: #eee;
+  display: flex;
+}
+
+.my-profile--avatar {
+  border-radius: 50%;
+  height: 55px;
+  width: 55px;
+  flex-grow: 0;
+  padding: 10px;
+}
+
+.my-profile--info {
+  padding: 15px 5px;
+  flex-grow: 1;
+}
+
+.my-profile--actions {
+  padding: 5px 0;
+}
+
+.my-profile--action-button {
+  background-color: white;
+  border-radius: 3px;
+  height: 25px;
+  font-size: 11px;
+  border: 1px solid #ccc;
+}
+
+.my-profile--action-button:hover {
+  box-shadow: 0 0 2px #ededed;
+  cursor: pointer;
 }

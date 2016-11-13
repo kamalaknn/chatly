@@ -1,7 +1,20 @@
 .conversation-footer {
-  /*width: 100%;*/
   height: 40px;
   padding: 10px 20px;
   background-color: #f5f1ee;
   display: flex;
+}
+
+.offline-banner {
+  flex-grow: 1;
+  font-size: 13px;
+  background-color: #ffaeae;
+  color: #545454;
+  padding: 6px 10px;
+  text-align: center;
+}
+
+.send-action {
+  padding: 5px 0;
+  cursor: pointer;
 }

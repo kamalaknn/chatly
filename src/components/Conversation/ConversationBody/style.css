@@ -1,6 +1,6 @@
 .message-list {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  overflow-y: scroll; 
   flex-grow: 0;
 }
