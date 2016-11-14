@@ -25,7 +25,21 @@ class MessagingService {
       outgoing: true,
       contents: messageContents
     };
+
+    // copy the outgoing message to simulate an incoming message
+    let simulatedReplyTime = new Date();
+    simulatedReplyTime.setSeconds(simulatedReplyTime.getSeconds() + 1);
+
+    let payloadForReply = {
+      id: generateMessageId(),
+      time: simulatedReplyTime,
+      sender: friend,
+      receiver: me,
+      outgoing: false,
+      contents: messageContents
+    };
     this.store.dispatch(addMessage(this.socketManager.sendMessage(payload)));
+    this.socketManager.sendMessage(payloadForReply);
   }
 
   captureIncomingMessage = (message) => {
