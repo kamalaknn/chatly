@@ -1,0 +1,55 @@
+{
+  "data": {
+    "1": {
+      "messages": [{
+        "id": "1084431099552",
+        "receiver": {
+          "id": "1",
+          "name": "Numaan Ashraf",
+          "avatar": "https://avatars2.githubusercontent.com/u/3295568?v=3&s=460"
+        },
+        "sender": {
+          "id": "9999",
+          "name": "Kamalakannan",
+          "avatar": "https://avatars0.githubusercontent.com/u/8401064?v=3&s=460"
+        },
+        "contents": "Hi",
+        "time": 1479027567726,
+        "outgoing": true
+      }, {
+        "id": "1197503125975",
+        "receiver": {
+          "id": "9999",
+          "name": "Kamalakannan",
+          "avatar": "https://avatars0.githubusercontent.com/u/8401064?v=3&s=460"
+        },
+        "sender": {
+          "id": 1,
+          "name": "Numaan Ashraf",
+          "avatar": "https://avatars2.githubusercontent.com/u/3295568?v=3&s=460"
+        },
+        "contents": "Hello",
+        "time": 1479027636861,
+        "outgoing": false
+      }]
+    },
+    "2": {
+      "messages": [{
+        "id": "998285759127",
+        "sender": {
+          "id": "9999",
+          "name": "Kamalakannan",
+          "avatar": "https://avatars0.githubusercontent.com/u/8401064?v=3&s=460"
+        },
+        "receiver": {
+          "id": "2",
+          "name": "Shamasis Bhattacharya",
+          "avatar": "https://avatars3.githubusercontent.com/u/232373?v=3&s=460"
+        },
+        "contents": "Hi",
+        "time": 1479027887917,
+        "outgoing": false
+      }]
+    }
+  }
+}
